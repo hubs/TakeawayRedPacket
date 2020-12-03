@@ -1,0 +1,119 @@
+<scroll-view scroll-y="{{true}}">     
+  <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" wx:if="{{swipers.length!==0}}">
+    <view wx:for="{{swipers}}" wx:key="item">
+      <swiper-item data-appid="{{item.app_id}}" data-path="{{item.app_path}}" bindtap="jumpClick">
+        <image src="{{item.image}}" mode="aspectFill"></image>
+    </swiper-item>
+    </view>
+  </swiper>
+  
+
+  <view class="cu-card case">
+  
+  <view class="cu-bar bg-white solid-bottom ">
+    <view class='action text-lg'>
+    {{title}}，<open-data type="userNickName"></open-data>
+    </view>
+    <view class="action text-sm"  wx:if="{{days_str}}">
+      <view class="page-tip-content">
+          <view class="circle-symbol">
+            ●
+            <view class="circle-symbol-big">●</view>
+            ●
+          </view>
+          {{days_str}}
+        </view>
+    </view>
+    <view class='action text-sm' wx:else>
+        <view class="page-tip-content">
+        点击
+        <view class="circle-symbol">
+          ●
+          <view class="circle-symbol-big">●</view>
+          ●
+        </view>
+        添加到我的小程序吧
+      </view>
+    </view>
+  </view>
+  <view class="cu-bar bg-white intro" wx:if="{{show_intro}}">
+    <view class='action text-sm'>
+     {{UID}}:已分享邀请(<text class="red"> {{ref_count}} </text>)个好友
+    </view>
+    <view class='action text-sm'>
+      剩余(<text class="red"> {{ref_dou}} </text>)豆(礼品底部咨询客服)
+    </view>
+  </view>
+    
+  
+    <view wx:for="{{coupons}}" wx:key="item">
+      <view class="cu-item margin-top"  data-appid="{{item.app_id}}" data-path="{{item.app_path}}" bindtap="jumpClick">
+        <view class="cu-bar bg-white solid-bottom" >
+          <view class="action">
+            <text class="cuIcon-title text-{{item.color}}"></text>{{item.title}}
+          </view>
+           <view class='action'>
+            <button class="cu-btn sm round bg-{{item.color}}">立即打开</button>
+            <!-- <button class="cuIcon-share lg text-{{item.color}} share"  open-type="share"></button> -->
+           </view>
+        </view>
+        <view class="image">
+          <image src="{{item.image}}" mode="widthFix"></image>
+        </view>
+      </view>
+
+      <view wx:if="{{index==1}}">
+       <view class="cu-list grid col-{{mini_lists.length}} mt">
+          <view class="cu-item" wx:for="{{mini_lists}}" wx:key>
+            <view class="cuIcon-{{item.icon}} text-{{item.color}}"   bindtap="jump_mini" data-appid="{{item.app_id}}" data-path="{{item.app_path}}">
+              <image src="{{item.image}}" mode="widthFix" class="item_img"></image>
+            </view>
+            <text>{{item.remark}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+ 
+
+  </view>
+   <view class="flex-sub text-center">
+      <view class=" text-sm padding  solid-bottom">
+        <view class="text-grey">----  点击底部"消息"，饭点时提醒你领券哦，客服:<button class="kf_btn" open-type="contact" session-from="weapp"><text class="cuIcon-service"></text></button> ----
+        </view>
+      </view>
+      
+  </view>
+  <view class='cu-tabbar-height'></view>
+</scroll-view>
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action" bindtap="subClick">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/xiaoxi2.png"></image>
+       <view class="cu-tag badge">1</view>
+    </view>
+    <view class="">消息</view>
+  </view>
+  <button class="action" open-type="share" hover-class="none">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/weixin.png"></image>
+    </view>
+    <view class="">分享</view>
+  </button>
+  <view class="action" bindtap="showModal" data-target="Image" wx:if="{{systemPlatform!=='ios'&&systemPlatform!=='IOS'}}">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/pengyouquan.png"></image>
+    </view>
+    <view class="">朋友圈</view>
+  </view>
+ 
+  <view class="cu-modal {{modalName=='Image'?'show':''}}" bindtap="hideModal">
+
+   <image class="finger-img" src="https://636f-coupon-release-jzdjo-1302996202.tcb.qcloud.la/finger_img.png"></image>
+    <view class="cu-dialog">
+    
+      <image src="/images/share.png" mode="widthFix"></image>
+    </view>
+  </view>
+</view>

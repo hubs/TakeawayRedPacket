@@ -1,0 +1,82 @@
+/**index.wxss**/
+.swiper-item{
+ display: inline-block;
+}
+button{ 
+  background-color: white; 
+  border: 0; 
+}
+
+.kf_btn{
+  display:inline-block;
+  vertical-align:middle;
+  background-color:transparent;
+  color:#39b5de!important;
+  padding-right:6px;
+  padding-left:6px;
+}
+button::after{
+  border: none;
+}
+
+.finger-img {
+  width: 96rpx;
+  height: 96rpx;
+  position: absolute;
+  top: 22rpx;
+  right: 128rpx;
+  -webkit-animation: finger-img-ani .3s linear infinite alternate both;
+}
+
+@-webkit-keyframes finger-img-ani {
+  0% {
+      -webkit-transform: translateY(0);
+  }
+
+  to {
+      -webkit-transform: translateY(-16rpx);
+  }
+}
+
+
+
+
+.circle-symbol,.page-tip-content {
+  display: flex;
+  align-items: center;
+}
+
+.circle-symbol {
+  margin: 0 -8rpx;
+  color: var(--color-text-default);
+  transform: scale(.5);
+}
+
+.circle-symbol-big {
+  margin: 0 8rpx;
+  transform: scale(1.5);
+}
+.cu-item{
+  margin-top: 6px;
+}
+.grid {
+  line-height: 18px;
+}
+.item_img{
+  width: 30px;
+  height: 30px;
+}
+.mt{
+  margin-top: 6px;
+}
+.red{
+  color:red;
+  padding: 2px;
+
+}
+.text-sm {
+  font-size: 24rpx!important;
+}
+.intro{
+  min-height:  48rpx!important;
+}
